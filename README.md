@@ -22,7 +22,7 @@ Based on the official Docker images from Elastic:
 
 By default, the stack exposes the following ports:
 
-* 5000: Logstash TCP input
+* 8080: Logstash HTTP input
 * 9200: Elasticsearch HTTP
 * 9300: Elasticsearch TCP transport
 * 5601: Kibana
@@ -126,3 +126,12 @@ $ docker-compose up
 for each individual component before performing a stack upgrade.
   
 
+## Send logs to the Logstash instance
+
+Send a log file to the HTTP listener of Kibana:
+Example:
+```
+curl -X POST localhost:8080/_bulk --data @./dmp-services-import-esxi-1-f65b8c8f7-vllx6.log
+```
+
+note: Use the input-scripts folder examples to feed your installation
